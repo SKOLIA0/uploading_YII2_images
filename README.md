@@ -21,3 +21,11 @@ chmod -R 777 /var/www/html/web/assets /var/www/html/runtime
 
 
 exit
+
+
+postman
+
+
+get
+
+http://213.171.9.80:8080/api/parameters
