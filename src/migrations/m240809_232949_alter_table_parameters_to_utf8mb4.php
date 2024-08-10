@@ -2,10 +2,7 @@
 
 use yii\db\Migration;
 
-/**
- * Class mXXXXXX_alter_table_parameters_to_utf8mb4
- */
-class mXXXXXX_alter_table_parameters_to_utf8mb4 extends Migration
+class m240809_232949_alter_table_parameters_to_utf8mb4 extends Migration
 {
     public function safeUp()
     {
