@@ -29,3 +29,8 @@ postman
 get
 
 http://213.171.9.80:8080/api/parameters
+
+
+
+
+http://213.171.9.80
