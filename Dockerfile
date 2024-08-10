@@ -22,17 +22,12 @@ RUN composer create-project --prefer-dist yiisoft/yii2-app-basic /var/www/html
 COPY config/db.php /var/www/html/config/db.php
 COPY config/web.php /var/www/html/config/web.php
 
-# Создание директории для загружаемых файлов и установка прав
-RUN mkdir -p /var/www/html/web/uploads && \
-    mkdir -p /var/www/html/web/assets && \
-    chmod -R 777 /var/www/html/web/uploads /var/www/html/web/assets
-
 # Настройка Apache: установка DocumentRoot на папку web
 RUN sed -i 's|/var/www/html|/var/www/html/web|g' /etc/apache2/sites-available/000-default.conf /etc/apache2/apache2.conf
 
 # Настройка прав доступа и включение модуля rewrite для Apache
-RUN chown -R www-data:www-data /var/www/html && \
-    a2enmod rewrite
+RUN chown -R www-data:www-data /var/www/html \
+    && a2enmod rewrite
 
-# Перезапуск Apache
-CMD ["apache2-foreground"]
+# Создание директории /uploads и /assets, установка прав и запуск Apache
+CMD mkdir -p /var/www/html/web/uploads /var/www/html/web/assets && chmod -R 777 /var/www/html/web/uploads /var/www/html/web/assets && apache2-foreground
